@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class 딱지놀이 {
+public class 구현_딱지놀이 {
 
 	public static void main(String[] args) throws Exception {
 

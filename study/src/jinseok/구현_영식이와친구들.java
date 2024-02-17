@@ -2,7 +2,7 @@ package jinseok;
 
 import java.util.Scanner;
 
-public class 영식이와친구들 {
+public class 구현_영식이와친구들 {
 
 	public static void main(String[] args) {
 
