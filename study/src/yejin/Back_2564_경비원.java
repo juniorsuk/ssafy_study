@@ -184,53 +184,5 @@ public class Back_2564_경비원 {
 
 	}
 
-//	static int[] dong;
-//	static int[][] placeArr;
-//	static int r, c, place;
-//
-//	public static void main(String[] args) throws IOException {
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//		StringTokenizer st = new StringTokenizer(br.readLine());
-//
-//		r = Integer.parseInt(st.nextToken());
-//		c = Integer.parseInt(st.nextToken());
-//
-//		place = Integer.parseInt(br.readLine());
-//		placeArr = new int[2][place];
-//		dong = new int[2];
-//		for (int i = 0; i < place; i++) {
-//			st = new StringTokenizer(br.readLine());
-//			placeArr[0][i] = Integer.parseInt(st.nextToken());
-//			placeArr[1][i] = Integer.parseInt(st.nextToken());
-//		}
-//		st = new StringTokenizer(br.readLine());
-//		dong[0] = Integer.parseInt(st.nextToken());
-//		dong[1] = Integer.parseInt(st.nextToken());
-//
-//		int ans = 0;
-//
-//		if (dong[0] == 1) {
-//			// 동근이 북
-//		} else if (dong[0] == 2) {
-//			// 동근이 남
-//		} else if (dong[0] == 3) {
-//			// 동근이 서
-//			findNS();
-//		} else {
-//			// 동근이 동
-//			findNS();
-//		}
-//
-//		System.out.println(ans);
-//	}
-//
-//	private static void findNS() {
-//		if (dong[0] == 3) {
-//			for (int i = 0; i < place; i++) {
-//				if()
-//			
-//			}
-//		}
-//	}
 
 }
