@@ -30,17 +30,18 @@ public class 브루트포스_주사위쌓기 {
 
 		}
 
-		result = 0;
+ 
 
 		for (int i = 0; i < 6; i++) {
 
 			max = 0;
 			sum = 0;
 
-			int start = dice[0][i];
+			int topPath = i;
+			int downPath = path[i];
 
 			for (int j = 0; j < 6; j++) {
-				if (j != i) {
+				if (dice[0][j] != dice[0][topPath] && dice[0][j] != dice[0][downPath]) {
 					max = dice[0][j] > max ? dice[0][j] : max;
 				}
 			}
@@ -49,30 +50,24 @@ public class 브루트포스_주사위쌓기 {
 
 			for (int j = 1; j < T; j++) {
 
-				int top = -1;
-				int down = -1;
 				max = 0;
 
 				for (int k = 0; k < 6; k++) {
 
-					if (i == 0 && dice[j][k] == start) {
-						top = k;
-						down = path[top];
-					}
-					
-					if (dice[j][k] == top) {
-						top = k;
-						down = path[top];
+					if (dice[j][k] == dice[j - 1][topPath]) {
+
+						downPath = k;
+						topPath = path[k];
+						break;
+
 					}
 
 				}
 
 				for (int k = 0; k < 6; k++) {
 
-					if (dice[j][k] != dice[j][top] && dice[j][k] != dice[j][down]) {
-
+					if (k != topPath && k != downPath) {
 						max = dice[j][k] > max ? dice[j][k] : max;
-
 					}
 
 				}
