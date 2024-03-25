@@ -4,7 +4,6 @@ import java.util.*;
 
 public class HSAT_출퇴근길 {
 
-
     static int N; // 정점의 갯수
     static int M; // 간선의 갯수
 
