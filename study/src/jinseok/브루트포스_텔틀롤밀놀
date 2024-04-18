@@ -1,0 +1,172 @@
+package jinseok;
+
+import java.util.Scanner;
+
+public class 브루트포스_테트리스 {
+
+	static int N, M, sum, result;
+	static int[][] map;
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		N = sc.nextInt();
+		M = sc.nextInt();
+
+		map = new int[N][M];
+
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				map[i][j] = sc.nextInt();
+			}
+		}
+
+		result = 0;
+		sum = 0;
+
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+
+				if (i + 1 < N && j + 1 < M) {
+					sum = map[i][j] + map[i + 1][j] + map[i][j + 1] + map[i + 1][j + 1];
+					result = sum > result ? sum : result;
+				}
+				
+				Straight(i, j);
+				L(i, j);
+				N(i, j);
+				our(i, j);
+
+			}
+
+		}
+
+		System.out.println(result);
+		sc.close();
+
+	}
+
+	private static void our(int i, int j) {
+		// ㅗ
+		if (i + 1 < N && j + 2 < M) {
+			sum = map[i][j + 1] + map[i + 1][j] + map[i + 1][j + 1] + map[i + 1][j + 2];
+			result = sum > result ? sum : result;
+		}
+
+		// ㅜ
+		if (i + 1 < N && j + 2 < M) {
+			sum = map[i][j] + map[i][j + 1] + map[i][j + 2] + map[i + 1][j + 1];
+			result = sum > result ? sum : result;
+		}
+
+		// ㅏ
+		if (i + 2 < N && j + 1 < M) {
+			sum = map[i][j] + map[i + 1][j] + map[i + 2][j] + map[i + 1][j + 1];
+			result = sum > result ? sum : result;
+		}
+
+		// ㅓ
+		if (i + 2 < N && j + 1 < M) {
+			sum = map[i][j + 1] + map[i + 1][j] + map[i + 1][j + 1] + map[i + 2][j + 1];
+			result = sum > result ? sum : result;
+		}
+	}
+
+	private static void N(int i, int j) {
+		
+		// N 기본 모양
+		if (i + 2 < N && j + 1 < M) {
+			sum = map[i][j] + map[i + 1][j] + map[i + 1][j + 1] + map[i + 2][j + 1];
+			result = sum > result ? sum : result;
+		}
+		
+		//	좌우 반전
+		if (i + 2 < N && j + 1 < M) {
+			sum = map[i][j + 1] + map[i + 1][j + 1] + map[i + 1][j] + map[i + 2][j];
+			result = sum > result ? sum : result;
+		}
+		
+		// 90도
+		if (i + 1 < N && j + 2 < M) {
+			sum = map[i + 1][j] + map[i + 1][j + 1] + map[i][j + 1] + map[i][j + 2];
+			result = sum > result ? sum : result;
+		}
+		
+		// 90도 좌우 반전
+		if (i + 1 < N && j + 2 < M) {
+			sum = map[i][j] + map[i][j + 1] + map[i + 1][j + 1] + map[i + 1][j + 2];
+			result = sum > result ? sum : result;
+		}
+
+	}
+
+	private static void L(int i, int j) {
+		
+		// L
+		if (i + 2 < N && j + 1 < M) {
+			sum = map[i][j] + map[i + 1][j] + map[i + 2][j] + map[i + 2][j + 1];
+			result = sum > result ? sum : result;
+		}
+		
+		// L 오른쪽 90도
+		if (i + 1 < N && j + 2 < M) {
+			sum = map[i + 1][j] + map[i + 1][j + 1] + map[i + 1][j + 2] + map[i][j + 2];
+			result = sum > result ? sum : result;
+		}
+		
+		// L 왼쪽 90도
+		if (i + 1 < N && j + 2 < M) {
+			sum = map[i][j] + map[i + 1][j] + map[i][j + 1] + map[i][j + 2];
+			result = sum > result ? sum : result;
+		}
+		
+		// L 180도 
+		if (i + 2 < N && j + 1 < M) {
+			sum = map[i][j] + map[i][j + 1] + map[i + 1][j + 1] + map[i + 2][j + 1];
+			result = sum > result ? sum : result;
+		}
+
+		
+		// L 좌우 반전
+		if (i + 2 < N && j + 1 < M) {
+			sum = map[i][j + 1] + map[i + 1][j + 1] + map[i + 2][j + 1] + map[i + 2][j];
+			result = sum > result ? sum : result;
+		}
+		
+		// (L 좌우 반전) 왼쪽 90도
+		if (i + 1 < N && j + 2 < M) {
+			sum = map[i][j] + map[i + 1][j] + map[i + 1][j + 1] + map[i + 1][j + 2];
+			result = sum > result ? sum : result;
+		}
+		
+		// (L 좌우 반전) 오른쪽 90도
+		if (i + 1 < N && j + 2 < M) {
+			sum = map[i][j] + map[i][j + 1] + map[i][j + 2] + map[i + 1][j + 2];
+			result = sum > result ? sum : result;
+		}
+		
+		// (L 좌우 반전) 180도
+		if (i + 2 < N && j + 1 < M) {
+			sum = map[i][j + 1] + map[i][j] + map[i + 1][j] + map[i + 2][j];
+			result = sum > result ? sum : result;
+		}
+
+
+	}
+
+	private static void Straight(int i, int j) {
+		// 가로
+		if (j + 3 < M) {
+			sum = map[i][j] + map[i][j + 1] + map[i][j + 2] + map[i][j + 3];
+			result = sum > result ? sum : result;
+		}
+
+		// 세로
+		if (i + 3 < N) {
+			sum = map[i][j] + map[i + 1][j] + map[i + 2][j] + map[i + 3][j];
+			result = sum > result ? sum : result;
+		}
+	}
+
+}
