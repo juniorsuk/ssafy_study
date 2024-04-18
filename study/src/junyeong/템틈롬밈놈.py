@@ -1,3 +1,4 @@
+# 파이썬 감을 잃지 않기 위해 오랜만에 파이썬으로 푼 문제입니다 ^_^
 from collections import deque
 import sys
 
